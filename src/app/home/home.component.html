@@ -1,0 +1,25 @@
+<app-main-slider></app-main-slider>
+<app-categories-slider></app-categories-slider>
+<div class="row g-4 mt-4 border-success">  
+    <h2 class="text-center text-main mb-3 fw-bold">Best Offers</h2>
+
+    <div class="col-lg-2 col-md-3 col-sm-6" *ngFor="let product of products;">
+        <div class="product rounded p-3 position-relative"> 
+            <a [routerLink]="['/productdetails', product.id]"> 
+                <div class="ratio ratio-1x1 m-auto w-100">
+                    <img [src]="product.imageCover" class="w-100" alt="">
+                </div> 
+                <h1 class="h6 text-main fw-bold small">{{product.category.name}}</h1> 
+                <span class="h5 text-muted fw-bolder ">{{product.title.split(' ').slice(0,2).join(" ")}}</span>
+                <div class="">
+                    <span class="text-muted font-sm">{{product.price}} EGP</span> 
+                </div>
+                <div class="position-absolute top-0 end-0 bg-success p-2">
+                    <i class="fa-solid fa-star text-warning"></i>  
+                    <span class="text-white ps-1">{{product.ratingsAverage}}</span>
+                </div>
+            </a>
+            <button (click)="addToCart(product.id)" class="btn bg-main text-white w-100 my-2"><i class="fa-solid fa-plus"></i> Add</button>
+        </div>
+    </div>
+</div>

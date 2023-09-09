@@ -1,0 +1,34 @@
+<div class="bg-main-light p-3 pt-5">
+    <h1 class="mt-3 fw-bold text-center">Your Shop Cart <i class="fa-solid fa-cart-shopping text-main ms-2 fa-lg"></i></h1>
+    <h3 class="text-main h5">Total Price: {{cartDetails?.totalCartPrice | currency: 'EGP'}}</h3> 
+    <div class="row border-bottom py-4" *ngFor="let cart of cartDetails?.products">
+        <div class="col-md-1">
+            <img [src]="cart?.product?.imageCover" class="w-100">
+        </div> 
+        <div class="col-md-11">
+            <div class="row justify-content-between">
+                <div class="col-10">
+                    <h3 class="h5 muted">{{cart?.product?.title}}</h3> 
+                    <span class="text-main">Item price: {{cart?.price | currency: 'EGP'}}</span> 
+                    <br>
+                    <button class="btn border-none p-0 mt-2 "(click)="removeCartItem(cart.product._id)"><i class="fa-solid fa-trash-can text-main fs-md"></i> Remove</button>
+                </div> 
+                <div class="col-2">
+                    <div class="bg-main-light py-1 px-2 border-success rounded-pill">
+                        <button (click)="upadteCartItem(cart.product._id,cart.count -1)" class="btn border-main btn-sm" ><i class="fa-solid fa-minus text-main"></i></button> 
+                        <span class="mx-2">{{cart?.count}}</span> 
+                        <button (click)="upadteCartItem(cart.product._id,cart.count +1)" class="btn border-main btn-sm" ><i class="fa-solid fa-plus text-main"></i></button> 
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-outline-success my-2 py-2 px-4">
+            <a routerLink="/payment">Pay via <i class="fa-brands fa-xl fa-cc-visa"></i></a>
+        </button>
+    </div>
+</div>
+
+<!-- "" -->

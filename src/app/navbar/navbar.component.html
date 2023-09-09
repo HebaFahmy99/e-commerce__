@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+      <div class="container">
+        <img src="./assets/freshcart-logo.svg" class="me-2" alt="">
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"> 
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <li *ngIf="isLoggedIn" class="nav-item">
+                    <a class="nav-link active" routerLink="home" routerLinkActive="text-success fw-bold" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+                </li>
+                <li *ngIf="isLoggedIn" class="nav-item">
+                    <a class="nav-link" routerLink="brands" routerLinkActive="text-success fw-bold">Brands</a>
+                </li>
+
+            </ul> 
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                <li class="nav-item d-flex justify-content-center align-items-center">
+                    <i class="fab fa-lg fa-instagram  mx-2"></i>
+                    <i class="fab fa-lg fa-facebook mx-2"></i>
+                    <i class="fab fa-lg fa-twitter mx-2"></i>
+                    <i class="fab fa-lg fa-linkedin mx-2"></i>
+                </li> 
+                <li *ngIf="!isLoggedIn">
+                    <a class="nav-link" routerLink="login" routerLinkActive="text-success fw-bold">Login</a>
+                </li>
+                <li *ngIf="!isLoggedIn">
+                    <a class="nav-link" routerLink="register" routerLinkActive="text-success fw-bold">Register</a>
+                </li>
+                <li *ngIf="isLoggedIn" >
+                    <span (click)="logOut()" class="nav-link cursor-pointer" routerLinkActive="text-success fw-bold">Logout</span>
+                </li> 
+                <li *ngIf="isLoggedIn" class="nav-item position-relative">
+                    <a class="nav-link" routerLink="cart" routerLinkActive="text-success fw-bold">
+                        <i class="fa-solid fa-cart-shopping fa-lg me-1"></i></a>  
+                        <span class="badge bg-success position-absolute top-0 end-0">{{CartItems}}</span>
+                </li>
+            </ul>
+        </div>
+  </div>
+</nav>
